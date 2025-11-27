@@ -1,6 +1,5 @@
 import heapq
 
-# Grafi si dictionary me distanca
 graph = {
     'A': {'B': 4, 'C': 2},
     'B': {'A': 4, 'C': 1, 'D': 5},
@@ -15,7 +14,6 @@ graph = {
 }
 
 def dijkstra(graph, start, end):
-    # Heap për të zgjedhur nyjën me distancën më të vogël
     heap = [(0, start)]
     distances = {node: float('inf') for node in graph}
     distances[start] = 0
@@ -34,7 +32,6 @@ def dijkstra(graph, start, end):
                 previous[neighbor] = current_node
                 heapq.heappush(heap, (distance, neighbor))
     
-    # Krijimi i rrugës më të shkurtër
     path = []
     node = end
     while node:
@@ -44,7 +41,6 @@ def dijkstra(graph, start, end):
     
     return path, distances[end]
 
-# Zgjidhja nga A → J
 shortest_path, distance = dijkstra(graph, 'A', 'J')
 print("Rruga më e shkurtër:", shortest_path)
 print("Distanca totale:", distance)
